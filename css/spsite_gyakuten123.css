@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /*common*/
 html,body{
 	font-size:16px;
@@ -44,9 +44,18 @@ header ul,footer ul{
     width: 100%;
     margin: 0 auto;
 	}
-header li[class^="side_"]{}
-header ul a,
-footer ul a{
+header li[class="side_left"]{
+	display: flex;
+    flex-direction: row;
+	}
+header .update{
+	text-decoration: none;
+    font-size: 0.75rem;
+    color: #ff8b00;
+    padding: 0.5rem;
+	}
+header a,
+footer a{
 	display: block;
 	}
 header ul .logo_ecap{
@@ -300,7 +309,13 @@ div[class^="area_"]{
     border-bottom: 2px solid;
 	}
 div[class="inner_lineup"]{
-	margin:4rem 0;
+    margin: 4rem auto;
+    max-width: 1600px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
 	}
 div[class^="area_"] h2{
     position: absolute;
@@ -319,26 +334,11 @@ div[class^="area_"] h2{
 	background-repeat:no-repeat;
 	box-sizing: border-box;
 	}
-@media screen and (max-width:426px){
-	div[class^="area_"] h2{
-		background-image:none;
-		background-color: rgba(64, 39, 19, 0.9);
-		border: 4px ridge #fff;
-		}
-	}
-.lineup_list{
-	display:flex;
-	flex-direction:row;
-	flex-wrap:nowrap;
-	justify-content:center;
-    max-width: 1600px;
-    width: 100%;
-    margin: auto;
-	}
-@media screen and (max-width:1280px){
-	.lineup_list{
-		flex-wrap:wrap;
-		}
+[class^="lineup_list_size"]{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
 	}
 div[class^="lineup_list_size_"]{
 	display: flex;
@@ -346,9 +346,21 @@ div[class^="lineup_list_size_"]{
     justify-content: space-around;
 	flex-wrap: nowrap;
 	}
-@media screen and (max-width:768px){
-	div[class^="lineup_list_size_"]{
+@media screen and (max-width:1599px){
+	div[class="inner_lineup"]{
 		flex-wrap:wrap;
+		}
+	}
+@media screen and (max-width:768px){
+	[class^="lineup_list_size_"]{
+		flex-wrap:wrap;
+		}
+	}
+@media screen and (max-width:426px){
+	div[class^="area_"] h2{
+		background-image:none;
+		background-color: rgba(64, 39, 19, 0.9);
+		border: 4px ridge #fff;
 		}
 	}
 li[class^="lineup_"]{
@@ -703,7 +715,6 @@ div[class="stand_chara_mayoi_chihiro"]{
 div[class="stand_chara_mei"]{
 	background-image: url(../img/bg_chara_mei.png);
 	background-position: 0% 100%;
-    background-size: 800px;
 	}
 div[class="stand_chara_godo"]{
 	background-image: url(../img/bg_chara_godo.png);
@@ -865,31 +876,66 @@ dl[class-="text_detail_summary_"] dd p:nth-of-type(1){
     background-size:contain;
     background-repeat: no-repeat;
 	padding:16rem 0;
-	max-width: 1400px;
+	max-width: 1920px;
     width: 100%;
     margin-right: auto;
 	}
 .storyline_intro_inner{
-    padding: 2rem 1rem;
+    padding:2rem 5%;
     background-color: rgba(0, 0, 0, 0.5);
 	}
 .storyline_intro_inner_text{
 	font-family: 'Noto Serif JP', sans-serif;
-    max-width: 600px;
+    max-width:550px;
     margin-left: auto;
     text-align: right;
     color: #fff;
 	}
-@media screen and (min-width:1921px){
-	.storyline_intro_inner_text{
-		margin:auto;
-		}
-	}
 .storyline_intro_inner h4{
 	font-size: 1.5rem;
+	margin:0 0 1rem 0;
 	}
-.storyline_intro_inner h4:nth-of-type(2){
-	margin:1rem 0 0 0;
+.storyline_intro_inner .shikishi h4{
+	border: 2px solid #fff;
+	box-shadow: inset 0 0 10px 5px rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.5);
+    color: #94601a;
+    padding: 1rem 0;
+    text-align: center;
+    text-shadow: 0 0 15px #fff,1px 1px #fff,-1px 1px #fff,1px -1px #fff,-1px -1px #fff;
+	}
+.storyline_intro_inner .storyline_intro_inner_text > div:nth-of-type(2){
+	margin:2rem 0;
+	}
+.storyline_intro_inner .text_arasuji{
+	max-width: 30em;
+    margin: 0 0 0 auto;
+	}
+.storyline_intro_inner .voice_actors{
+	margin-left: auto;
+	}
+.storyline_intro_inner .voice_actors th,
+.storyline_intro_inner .voice_actors td{
+	vertical-align:middle;
+	text-align: right;
+	}
+.storyline_intro_inner .voice_actors td{
+	display:flex;
+	flex-direction:row;
+	flex-wrap:nowrap;
+	justify-content: space-between;
+	}
+.storyline_intro_inner .voice_actors td:before{
+	content:"：";
+	display:block;
+	}
+@media screen and (max-width:426px){
+	.storyline_intro_inner_text{
+		text-align: left;
+		}
+	.storyline_intro_inner .shikishi h4{
+		font-size: 1.0rem;
+		}
 	}
 .capture_dvd{
 	max-width: 970px;
